@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/style.css">
+<h2>Edit Product</h2>
+
+<form method="POST" action="/api/products/update/<%= product.productId %>">
+
+  <input 
+    name="productName" 
+    value="<%= product.productName %>" 
+    required
+  >
+
+  <select name="categoryId">
+    <% categories.forEach(c => { %>
+      <option 
+        value="<%= c.categoryId %>" 
+        <%= c.categoryId === product.categoryId ? "selected" : "" %>>
+        <%= c.categoryName %>
+      </option>
+    <% }) %>
+  </select>
+
+  <button>Update Product</button>
+</form>
+
+<br>
+<a href="/api/products" class="btn-link">Back to Products</a>

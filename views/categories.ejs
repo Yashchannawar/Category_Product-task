@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="/style.css">
+
+<h2>Category Master</h2>
+
+<% if(message === "created") { %>
+  <p style="color:green;">Category created successfully!</p>
+<% } %>
+
+<% if(message === "deleted") { %>
+  <p style="color:red;">Category deleted!</p>
+<% } %>
+
+<% if(message === "updated") { %>
+  <p style="color:blue;">Category updated successfully!</p>
+<% } %>
+
+
+<% if(message === "error") { %>
+  <p style="color:red;">Something went wrong!</p>
+<% } %>
+
+<form method="POST" action="/api/categories">
+  <input name="categoryName" placeholder="Category Name" required>
+  <button>Add</button>
+</form>
+
+<table border="1">
+<tr>
+  <th>ID</th>
+  <th>Name</th>
+  <th>Action</th>
+</tr>
+
+<% categories.forEach(c => { %>
+<tr>
+  <td><%= c.categoryId %></td>
+  <td><%= c.categoryName %></td>
+  <td>
+    
+  <a href="/api/categories/edit/<%= c.categoryId %>">update</a> |
+  <a href="/api/categories/delete/<%= c.categoryId %>">Delete</a>
+</td>
+
+  
+</tr>
+<% }) %>
+</table>
+
+
+<a href="/api/products" class="btn-link">Go to products</a>
+

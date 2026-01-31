@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="/style.css">
+
+<h2>Product Master</h2>
+
+<!-- Messages -->
+<% if(message === "created") { %>
+  <p style="color:green;">Product created successfully!</p>
+<% } %>
+<% if(message === "updated") { %>
+  <p style="color:blue;">Product updated successfully!</p>
+<% } %>
+<% if(message === "deleted") { %>
+  <p style="color:red;">Product deleted successfully!</p>
+<% } %>
+<% if(message === "error") { %>
+  <p style="color:red;">Something went wrong!</p>
+<% } %>
+
+<!-- Add Product Form -->
+<form method="POST" action="/api/products">
+  <input name="productName" placeholder="Product Name" required>
+
+  <select name="categoryId" required>
+    <option value="">Select Category</option>
+    <% categories.forEach(c => { %>
+      <option value="<%= c.categoryId %>"><%= c.categoryName %></option>
+    <% }) %>
+  </select>
+
+  <button>Add Product</button>
+</form>
+
+<!-- Products Table -->
+<table border="1" style="margin-top:20px;">
+<tr>
+  <th>Product ID</th>
+  <th>Product Name</th>
+  <th>Category ID</th>
+  <th>Category Name</th>
+  <th>Action</th>
+</tr>
+
+<% products.forEach(p => { %>
+<tr>
+  <td><%= p.productId %></td>
+  <td><%= p.productName %></td>
+  <td><%= p.categoryId %></td>
+  <td><%= p.categoryName %></td>
+  <td>
+    <a href="/api/products/edit/<%= p.productId %>">update</a> |
+    <a href="/api/products/delete/<%= p.productId %>">Delete</a>
+  </td>
+</tr>
+<% }) %>
+</table>
+
+<!-- Pagination -->
+<div style="margin-top:10px;">
+  <% for(let i=1; i<=totalPages; i++) { %>
+    <% if(i === currentPage) { %>
+      <strong><%= i %></strong>
+    <% } else { %>
+      <a href="/api/products?page=<%= i %>"><%= i %></a>
+    <% } %>
+  <% } %>
+</div>
+
+<br>
+<a href="/api/categories" class="btn-link">Go to categories</a>
+
