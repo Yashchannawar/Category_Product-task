@@ -22,6 +22,7 @@ export const getProducts = (req, res) => {
         c.categoryName
       FROM products p
       JOIN categories c ON p.categoryId = c.categoryId
+      ORDER BY  p.productId ASC
       LIMIT ? OFFSET ?
     `;
 

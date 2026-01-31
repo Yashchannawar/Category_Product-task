@@ -10,6 +10,7 @@ This project provides REST APIs to manage categories and products, where each pr
 - Product CRUD operations
 - Product mapped with Category (Foreign Key)
 - RESTful APIs
+- EJS-based frontend pages for Categories  and  Products
 - MySQL database integration
 - Environment-based configuration using .env
 
@@ -17,6 +18,7 @@ This project provides REST APIs to manage categories and products, where each pr
 
 ## Tech Stack
 - Backend: Node.js, Express.js  
+- Frontend: EJS (Embedded JavaScript templates) View Engine 
 - Database: MySQL  
 - Tools: Postman, GitHub  
 
@@ -30,14 +32,21 @@ backend/
 ├── controllers/
 │ ├── categoryController.js
 │ └── productController.js
+├── public/
+│ └── style.css
 ├── routes/
 │ ├── categoryRoutes.js
 │ └── productRoutes.js
+├── views/
+│ ├── categories.ejs
+│ └── edit-categories.ejs
+│ ├── edit-products.ejs
+│ └── products.ejs
 ├── database.sql
 ├── .env.example
 ├── .gitignore
 ├── package.json
-├── server.js
+├── index.js
 └── README.md
 
 ---
@@ -77,16 +86,28 @@ http://localhost:3000/api/products
 ## API Endpoints
 
 ### Categories
-GET /categories
-POST /categories
-PUT /categories/:id
-DELETE /categories/:id
+- GET /api/categories – Get all categories
+- POST /api/categories – Create a new category
+- PUT /api/categories/:id – Update category by ID
+- DELETE /api/categories/:id – Delete category by ID
 
 ### Products
-GET /products
-POST /products
-PUT /products/:id
-DELETE /products/:id
+- GET /api/products – Get all products
+- POST /api/products – Create a new product
+- PUT /api/products/:id – Update product by ID
+- DELETE /api/products/:id – Delete product by ID
+
+# Frontend Pages (EJS)
+
+Category List: /categories – Display all categories
+
+Edit Category: /categories/edit/:id – Form to update a category
+
+Product List: /products – Display all products with category name
+
+Edit Product: /products/edit/:id – Form to update a product
+
+- Both correspond to the Update part of CRUD, but need separate pages to display the current data and allow edits.
 
 ## Security Note
 
