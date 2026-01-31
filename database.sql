@@ -10,7 +10,7 @@ CREATE TABLE products (
   productId INT AUTO_INCREMENT PRIMARY KEY,
   productName VARCHAR(100),
   categoryId INT,
-  FOREIGN KEY (categoryId) REFERENCES categories(id)
+  FOREIGN KEY (categoryId) REFERENCES categories(categoryId)
 );
 
 select * from categories;
