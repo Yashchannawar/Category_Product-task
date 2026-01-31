@@ -55,7 +55,7 @@ backend/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/Yashchannawar/PRODUCTS-APP.git
+git clone https://github.com/Yashchannawar/Category_Product-task.git
 cd project-name
 ```
 2. Go inside backend folder 
